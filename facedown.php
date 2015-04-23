@@ -25,7 +25,7 @@ function facedown_code() {
 	global $post;
 	$rotate = get_option('facedown_rotate');
 	$include = get_option('facedown_include');
-	if($include != '' && in_array($post->ID, split(",", $include))) { ?>
+	if(($include != '' && in_array($post->ID, split(",", $include))) || $include == '') { ?>
 		<!-- FaceDown Plugin -->
 		<script type="text/javascript">jQuery(document).ready(function () { <?php if($rotate == 180) { ?>
 		var fdheight = jQuery('body').outerHeight(); var fdwidth = jQuery('body').outerWidth(); jQuery('body').css("height", fdheight+"px"); jQuery('body').css("transform", "rotate(180deg)"); jQuery("html, body").animate({ scrollTop: jQuery(document).height() }, 200);<?php } else if($rotate == 90) { ?>var fdheight = jQuery('body').outerHeight(); var fdwidth = jQuery('body').outerWidth(); jQuery('body').css("height", fdwidth+"px"); jQuery('body').css("transform", "rotate(270deg)");<?php } else if($rotate == 270) { ?>var fdheight = jQuery('body').outerHeight(); var fdwidth = jQuery('body').outerWidth(); jQuery('body').css("min-width", fdheight+"px"); jQuery('body').css("transform", "rotate(90deg)");
